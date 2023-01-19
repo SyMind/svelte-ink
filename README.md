@@ -5,7 +5,7 @@ Svelte for CLIs. Build and test your CLI output using components.
 # Install
 
 ```bash
-npm install ink react
+npm install svelte-ink
 ```
 
 # Usage
