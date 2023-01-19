@@ -37,6 +37,7 @@
     "typescript": "^4.9.4"
   },
   "dependencies": {
-    "ansi-escapes": "^6.0.0"
+    "ansi-escapes": "^6.0.0",
+    "chalk": "^5.2.0"
   }
 }

@@ -1,4 +1,5 @@
 import ansiEscapes from 'ansi-escapes'
+import chalk from 'chalk'
 
 export type InkNodeAttribute = boolean | string | number
 
@@ -70,12 +71,12 @@ export abstract class InkNode {
             }
             timer = setTimeout(() => {
                 process.stdout.write(ansiEscapes.eraseLines(1))
-                this.render()
+                process.stdout.write(this.render())
             })
         }
     }
 
-    public abstract render(): void
+    public abstract render(): string
 }
 
 class TextNode extends InkNode {
@@ -102,8 +103,8 @@ class TextNode extends InkNode {
         return this._data
     }
 
-    render() {
-        process.stdout.write(this._data)
+    render(): string {
+        return this._data
     }
 }
 
@@ -116,9 +117,17 @@ class InkViewNode extends InkNode {
     }
 
     render() {
+        const writes: string[] = []
         for (const child of this.childNodes) {
-            child.render()
+            writes.push(child.render())
         }
+        const text = writes.join('')
+
+        const color = this.getAttribute('color')
+        if (typeof color === 'string') {
+            return chalk[color](text)
+        }
+        return text
     }
 }
 
