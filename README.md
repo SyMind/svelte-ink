@@ -1,2 +1,3 @@
-# svelte-ink
-🌈 Svelte for interactive command-line apps
+# Svelte Ink
+
+Svelte for CLIs. Build and test your CLI output using components.
