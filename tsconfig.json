@@ -10,9 +10,6 @@
 		"lib": ["es2017"],
 		"target": "es2017",
 
-		"declaration": true,
-		"declarationDir": "types",
-
 		"noEmitOnError": true,
 		"noErrorTruncation": true,
 
@@ -25,7 +22,7 @@
 		// Hides exports flagged with @internal from the d.ts output
 		"stripInternal": true,
 
-		"strict": true,
+		"skipLibCheck": true,
 		"noImplicitThis": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
