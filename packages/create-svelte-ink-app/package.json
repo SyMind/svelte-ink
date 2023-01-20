@@ -1,0 +1,24 @@
+{
+  "name": "create-svelte-ink-app",
+  "version": "0.0.1",
+  "description": "",
+  "bin": {
+    "create-svelte-ink-app": "./lib/index.js"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [
+    "svelte",
+    "cli",
+    "stdout",
+    "components",
+    "command-line",
+    "print",
+    "render",
+    "colors",
+    "text"
+  ],
+  "author": "SyMind",
+  "license": "MIT"
+}
