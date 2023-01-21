@@ -34,9 +34,6 @@ export async function createApp({ appPath, packageManager }: CreateAppArgs) {
     if (!isFolderEmpty(root, appName)) {
         process.exit(1)
     }
-
-    const useYarn = packageManager === 'yarn'
-    const originalDirectory = process.cwd()
   
     console.log(`Creating a new Svelte Ink app in ${chalk.green(root)}.`)
     console.log()
@@ -51,9 +48,8 @@ export async function createApp({ appPath, packageManager }: CreateAppArgs) {
     const packageJson = {
         name: appName,
         version: '0.1.0',
-        private: true,
         scripts: {
-            // TODO
+            build: 'node build.mjs'
         }
     }
 
@@ -77,7 +73,7 @@ export async function createApp({ appPath, packageManager }: CreateAppArgs) {
     /**
      * Default devDependencies.
      */
-    const devDependencies = ['esbuild']
+    const devDependencies = ['esbuild', 'esbuild-svelte']
 
     /**
      * Install package.json dependencies if they exist.
@@ -133,13 +129,6 @@ export async function createApp({ appPath, packageManager }: CreateAppArgs) {
     if (tryGitInit(root)) {
         console.log('Initialized a git repository.')
         console.log()
-    }
-
-    let cdpath: string
-    if (path.join(originalDirectory, appName) === appPath) {
-        cdpath = appName
-    } else {
-        cdpath = appPath
     }
 
     console.log(`${chalk.green('Success!')} Created ${appName} at ${appPath}`)

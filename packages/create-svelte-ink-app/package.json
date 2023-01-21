@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Create Svelte Ink app with one command",
   "bin": {
-    "create-svelte-ink-app": "index.js"
+    "create-svelte-ink-app": "lib/index.js"
   },
   "scripts": {
     "build": "esbuild src/index.ts --bundle --platform=node --outfile=lib/index.js ",
