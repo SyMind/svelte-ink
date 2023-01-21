@@ -48,8 +48,12 @@ export async function createApp({ appPath, packageManager }: CreateAppArgs) {
     const packageJson = {
         name: appName,
         version: '0.1.0',
+        bin: {
+            appName: "lib/index.js"
+        },
         scripts: {
-            build: 'node build.mjs'
+            build: 'node build.mjs',
+            dev: 'node build.mjs & node lib/index.js'
         }
     }
 
