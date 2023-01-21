@@ -1,6 +1,6 @@
-# Svelte Ink
+<h1 align="center">Svelte Ink</h1>
 
-Svelte for CLIs. Build and test your CLI output using components.
+<p align="center">Svelte for CLIs. Build and test your CLI output using components.</p>
 
 # Install
 
@@ -28,6 +28,6 @@ onDestroy(() => clearInterval(timer))
 
 <img src="media/demo.svg" width="600">
 
-# LICENSE
+# License
 
-[MIT](./LICENSE)
+[MIT](../../LICENSE)

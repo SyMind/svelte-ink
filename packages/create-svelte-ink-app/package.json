@@ -1,7 +1,7 @@
 {
   "name": "create-svelte-ink-app",
   "version": "0.0.1",
-  "description": "",
+  "description": "Create Svelte Ink app with one command",
   "bin": {
     "create-svelte-ink-app": "./lib/index.js"
   },
