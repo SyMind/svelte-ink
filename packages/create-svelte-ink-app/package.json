@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "description": "Create Svelte Ink app with one command",
   "bin": {
-    "create-svelte-ink-app": "./lib/index.js"
+    "create-svelte-ink-app": "index.js"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "rollup -c"
   },
   "keywords": [
     "svelte",
@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "@types/cross-spawn": "^6.0.2",
+    "@types/node": "^18.11.18",
     "@types/prompts": "^2.4.2",
     "@types/validate-npm-package-name": "^4.0.0"
   }
