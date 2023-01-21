@@ -6,7 +6,8 @@
     "create-svelte-ink-app": "index.js"
   },
   "scripts": {
-    "build": "esbuild src/index.ts --bundle --platform=node --outfile=lib/index.js "
+    "build": "esbuild src/index.ts --bundle --platform=node --outfile=lib/index.js ",
+    "dev": "pnpm run build -- --watch"
   },
   "keywords": [
     "svelte",
