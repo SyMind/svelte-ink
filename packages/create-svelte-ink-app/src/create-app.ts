@@ -48,6 +48,9 @@ export async function createApp({ appPath, packageManager }: CreateAppArgs) {
     const packageJson = {
         name: appName,
         version: '0.1.0',
+        files: [
+            'lib'
+        ],
         bin: {
             appName: "lib/index.js"
         },
