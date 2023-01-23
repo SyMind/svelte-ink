@@ -2,8 +2,16 @@ import importSvelte from 'import-svelte'
 import {render} from '../../src'
 import createStdout from './create-stdout'
 
-export function renderToString(id: string, options: {columns: number} = {columns: 100}): string | undefined {
-    const App = importSvelte(id)
+function wait(): Promise<void> {
+	return new Promise(resolve => {
+		setTimeout(resolve)
+	})
+}
+
+export async function renderToString(id: string, options: {columns: number} = {columns: 100}): Promise<string | undefined> {
+    const App = importSvelte(id, {
+		hydratable: true
+	})
 	const stdout = createStdout(options.columns)
 
 	render(App, {
@@ -11,6 +19,8 @@ export function renderToString(id: string, options: {columns: number} = {columns
 		stdout,
 		debug: true
 	})
+
+	await wait()
 
 	return stdout.get()
 }

@@ -1,5 +1,6 @@
 import ansiEscapes from 'ansi-escapes'
 import chalk from 'chalk'
+import { colorize } from './colorize'
 
 export type InkNodeAttribute = boolean | string | number
 
@@ -127,12 +128,48 @@ class InkViewNode extends InkNode {
         for (const child of this.childNodes) {
             writes.push(child.render())
         }
-        const text = writes.join('')
+        let text = writes.join('')
+
+        const dimColor = this.getAttribute('dim-color')
+        if (typeof dimColor === 'string') {
+            text = chalk.dim(text)
+        }
 
         const color = this.getAttribute('color')
         if (typeof color === 'string') {
-            return chalk[color](text)
+            text = colorize(text, color, 'foreground')
         }
+
+        const backgroundColor = this.getAttribute('backgroundColor')
+        if (typeof backgroundColor === 'string') {
+            text = colorize(text, backgroundColor, 'background')
+        }
+
+        const bold = this.getAttribute('bold')
+        if (typeof bold === 'string') {
+			text = chalk.bold(text)
+		}
+
+        const italic = this.getAttribute('italic')
+		if (typeof italic === 'string') {
+			text = chalk.italic(text)
+		}
+
+        const underline = this.getAttribute('underline')
+		if (typeof underline === 'string') {
+			text = chalk.underline(text)
+		}
+
+        const strikethrough = this.getAttribute('strikethrough')
+		if (typeof strikethrough === 'string') {
+			text = chalk.strikethrough(text)
+		}
+
+        const inverse = this.getAttribute('inverse')
+		if (typeof inverse === 'string') {
+			text = chalk.inverse(text)
+		}
+
         return text
     }
 }
