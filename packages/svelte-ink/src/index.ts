@@ -1,19 +1,19 @@
 import { SvelteComponent } from 'svelte'
-import { SvelteInkDocument } from './dom'
+import { SvelteInkDocument, SvelteInkDocumentOptions } from './dom'
 
-// expose our fake dom as global document for svelte components
-let window = global as any
+export function render(App: typeof SvelteComponent, options: SvelteInkDocumentOptions): SvelteComponent {
+    // expose our fake dom as global document for svelte components
+    const window = global as any
 
-window.window = global
-window.document = new SvelteInkDocument()
+    window.window = global
+    window.document = new SvelteInkDocument(options)
 
-window.performance = {
-    now() {
-        return Date.now()
+    window.performance = {
+        now() {
+            return Date.now()
+        }
     }
-}
 
-export function render(App: typeof SvelteComponent): SvelteComponent {
     const root = window.document.createElement('ink-root')
     return new App({
         target: root

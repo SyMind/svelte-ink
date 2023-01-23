@@ -5,7 +5,8 @@
   "main": "lib/index.js",
   "type": "module",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "test": "ava"
   },
   "files": [
     "lib"
@@ -36,6 +37,24 @@
     "chalk": "^5.2.0"
   },
   "devDependencies": {
-    "@types/node": "^18.11.18"
+    "@ava/typescript": "^3.0.1",
+    "@types/node": "^18.11.18",
+    "ava": "^5.1.1",
+    "babel-register": "^6.26.0",
+    "import-svelte": "^1.0.3",
+    "sinon": "^15.0.1",
+    "ts-node": "^10.9.1"
+  },
+  "ava": {
+    "files": [
+      "test/**/*.spec.ts"
+    ],
+    "extensions": {
+      "ts": "module"
+    },
+    "nodeArguments": [
+      "--loader=ts-node/esm",
+      "--experimental-specifier-resolution=node"
+    ]
   }
 }

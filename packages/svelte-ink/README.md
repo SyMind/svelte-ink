@@ -4,8 +4,10 @@
 
 # Install
 
+Use create-svelte-ink-app to quickly scaffold a new Ink-based CLI.
+
 ```bash
-npm install svelte-ink
+npx create-svelte-ink-app
 ```
 
 # Usage
@@ -27,6 +29,10 @@ onDestroy(() => clearInterval(timer))
 ```
 
 <img src="media/demo.svg" width="600">
+
+# Components
+
+## `<ink-text>`
 
 # License
 

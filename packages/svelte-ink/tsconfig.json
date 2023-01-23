@@ -14,7 +14,7 @@
 		"noErrorTruncation": true,
 
 		// rollup takes care of these
-		"module": "esnext",
+		"module": "ESNext",
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
 		"allowSyntheticDefaultImports": true,

@@ -13,6 +13,12 @@ export abstract class InkNode {
     public childNodes: InkNode[] = []
 
     private attributes: Record<string, InkNodeAttribute> = {}
+    
+    private stdout: NodeJS.WriteStream
+
+    constructor(stdout: NodeJS.WriteStream) {
+        this.stdout = stdout
+    }
 
     public getAttribute(key: string): InkNodeAttribute {
         return this.attributes[key]
@@ -70,8 +76,8 @@ export abstract class InkNode {
                 clearTimeout(timer)
             }
             timer = setTimeout(() => {
-                process.stdout.write(ansiEscapes.eraseLines(1))
-                process.stdout.write(this.render())
+                this.stdout.write(ansiEscapes.eraseLines(1))
+                this.stdout.write(this.render())
             })
         }
     }
@@ -84,8 +90,8 @@ class TextNode extends InkNode {
 
     private _data: string
 
-    constructor(data: string) {
-        super()
+    constructor(data: string, stdout: NodeJS.WriteStream) {
+        super(stdout)
         this._data = String(data)
     }
 
@@ -111,8 +117,8 @@ class TextNode extends InkNode {
 class InkViewNode extends InkNode {
     public nodeName: string
 
-    constructor(nodeName: string) {
-        super()
+    constructor(nodeName: string, stdout: NodeJS.WriteStream) {
+        super(stdout)
         this.nodeName = nodeName
     }
 
@@ -131,12 +137,27 @@ class InkViewNode extends InkNode {
     }
 }
 
+export interface SvelteInkDocumentOptions {
+    /**
+	 * Output stream where app will be rendered.
+	 *
+	 * @default process.stdout
+	 */
+	stdout?: NodeJS.WriteStream;
+}
+
 export class SvelteInkDocument {
+    private stdout: NodeJS.WriteStream
+
+    constructor(options: SvelteInkDocumentOptions = {}) {
+        this.stdout = options.stdout || process.stdout
+    }
+
 	createElement(nodeName: string): InkNode {
-        return new InkViewNode(nodeName)
+        return new InkViewNode(nodeName, this.stdout)
 	}
 
 	createTextNode(data: string): TextNode {
-		return new TextNode(data)
+		return new TextNode(data, this.stdout)
 	}
 }
