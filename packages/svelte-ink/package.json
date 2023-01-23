@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "test": "ava"
+    "test": "ava -s"
   },
   "files": [
     "lib"

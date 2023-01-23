@@ -140,7 +140,7 @@ class InkViewNode extends InkNode {
             text = colorize(text, color, 'foreground')
         }
 
-        const backgroundColor = this.getAttribute('backgroundColor')
+        const backgroundColor = this.getAttribute('background-color')
         if (typeof backgroundColor === 'string') {
             text = colorize(text, backgroundColor, 'background')
         }

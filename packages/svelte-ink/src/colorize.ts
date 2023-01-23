@@ -41,13 +41,7 @@ export function colorize(str: string, color: string | undefined, type: ColorType
 		return (chalk as any)[method](value)(str);
 	}
 
-	const isRgbLike =
-		color.startsWith('rgb') ||
-		color.startsWith('hsl') ||
-		color.startsWith('hsv') ||
-		color.startsWith('hwb');
-
-	if (isRgbLike) {
+	if (color.startsWith('rgb')) {
 		const matches = RGB_LIKE_REGEX.exec(color);
 
 		if (!matches) {

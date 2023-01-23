@@ -8,7 +8,7 @@ function wait(): Promise<void> {
 	})
 }
 
-export async function renderToString(id: string, options: {columns: number} = {columns: 100}): Promise<string | undefined> {
+export async function renderToString(id: string, options: {columns: number} = {columns: 100}): Promise<string> {
     const App = importSvelte(id, {
 		hydratable: true
 	})
@@ -16,8 +16,7 @@ export async function renderToString(id: string, options: {columns: number} = {c
 
 	render(App, {
 		// @ts-ignore
-		stdout,
-		debug: true
+		stdout
 	})
 
 	await wait()
