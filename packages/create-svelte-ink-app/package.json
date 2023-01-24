@@ -9,6 +9,10 @@
     "build": "esbuild src/index.ts --bundle --platform=node --outfile=lib/index.js ",
     "dev": "pnpm run build -- --watch"
   },
+  "files": [
+    "lib",
+    "template"
+  ],
   "keywords": [
     "svelte",
     "svelte-ink",
@@ -21,8 +25,16 @@
     "colors",
     "text"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SyMind/svelte-ink.git"
+  },
   "author": "SyMind",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SyMind/svelte-ink/issues"
+  },
+  "homepage": "https://github.com/SyMind/svelte-ink#readme",
   "devDependencies": {
     "@types/cross-spawn": "^6.0.2",
     "@types/node": "^18.11.18",
