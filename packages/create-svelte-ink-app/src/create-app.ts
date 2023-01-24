@@ -56,7 +56,7 @@ export async function createApp({ appPath, packageManager }: CreateAppArgs) {
         },
         scripts: {
             build: 'node build.mjs',
-            dev: 'node build.mjs & node lib/index.js'
+            dev: 'node build.mjs && node lib/index.js'
         }
     }
 
